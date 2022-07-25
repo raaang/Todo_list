@@ -8,7 +8,7 @@ function List(props) {
 	const todo_list = props.todo;
 
 	return (
-		<div className="item-list">
+		<div className="list-wrap">
 			{todo_list && todo_list.map((item, index) => {
 				console.log('map', index, item);
 				return (

@@ -15,12 +15,12 @@ function TodoList(props) {
 	console.log(todo);
 	console.log(count);
 
-	return ( 
-		< div>
-			< Header />
-			< Form todo={ todo } setTodo={ setTodo } count={ count } setCount={ setCount } />
-			< Layout todo={ todo } />
-		</div>
+	return (
+		<>
+			<Header />
+			<Form todo={todo} setTodo={setTodo} count={count} setCount={setCount} />
+			<Layout todo={todo} />
+		</>
 	);
 }
 

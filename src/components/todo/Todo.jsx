@@ -12,12 +12,12 @@ function Todo(props) {
 	// }
 
 	return (
-		<div className="item">
-			<div className="item-info">
+		<div className="todo">
+			<div className="todo-info">
 				<h2>{props.todo.title}</h2>
 				<p>{props.todo.body}</p>
 			</div>
-			<div className="item-btn">
+			<div className="todo-btn">
 				<button className="remove-btn">삭제하기</button>
 				<button className="done-btn">{props.isDone ? "취소" : "완료"}</button>
 			</div>
