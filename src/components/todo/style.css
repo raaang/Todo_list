@@ -14,8 +14,8 @@
 }
 
 .todo-info {
+	height: 60%;
 	text-align: left;
-	/* background-color: aliceblue; */
 }
 
 .todo-btn {

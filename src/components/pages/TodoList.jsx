@@ -3,23 +3,20 @@ import Form from '../form/Form';
 import Header from '../header/Header';
 import Layout from '../layout/Layout';
 
-function TodoList(props) {
-	const [count, setCount] = useState(0);
+function TodoList() {
+	const [count, setCount] = useState(1);
 	const [todo, setTodo] = useState([{
-		title: '리액트 공부하기',
-		body: '리액트 기초를 공부해봅시다.',
+		title: "",
+		body: "",
 		isDone: false,
-		id: count
+		id: 0
 	}]);
-
-	console.log(todo);
-	console.log(count);
 
 	return (
 		<>
 			<Header />
 			<Form todo={todo} setTodo={setTodo} count={count} setCount={setCount} />
-			<Layout todo={todo} />
+			<Layout todo={todo} setTodo={setTodo}/>
 		</>
 	);
 }

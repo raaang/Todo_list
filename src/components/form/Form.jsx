@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import './style.css';
 
 function Form(props) {
-	// console.log('form', props.working);
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 

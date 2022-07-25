@@ -2,15 +2,6 @@ import React from 'react';
 import './style.css';
 
 function Todo(props) {
-	console.log('todo', props);
-	
-	// const done_btn = '';
-	// if (props.todo.isDone) {
-	// 	done_btn = '취소';
-	// } else {
-	// 	done_btn = '완료';
-	// }
-
 	return (
 		<div className="todo">
 			<div className="todo-info">
@@ -18,8 +9,8 @@ function Todo(props) {
 				<p>{props.todo.body}</p>
 			</div>
 			<div className="todo-btn">
-				<button className="remove-btn">삭제하기</button>
-				<button className="done-btn">{props.isDone ? "취소" : "완료"}</button>
+				<button className="remove-btn" onClick={() => props.onRemoveHandler(props.todo.id)}>삭제하기</button>
+				<button className="done-btn" onClick={() => props.onChangeHandler(props.todo)}>{props.todo.isDone ? "취소" : "완료"}</button>
 			</div>
 		</div>
 	);
