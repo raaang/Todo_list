@@ -2,13 +2,14 @@ import React from 'react';
 import List from '../list/List';
 import './style.css';
 
-function Layout() {
+function Layout(props) {
+	console.log('layout', props.todo);
 
 	return (
 		<div className="layout">
 			<div className="working-list">
 				<h2>Working.. 🔥</h2>
-				<List />
+				<List todo={props.todo}/>
 			</div>
 
 			<div className="done-list">
