@@ -1,0 +1,43 @@
+.item {
+	width: 280px;
+	height: 150px;
+	padding: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+
+	text-align: center;
+
+	float: left;
+	
+	border: 4px solid #329eff;
+	border-radius: 10px;
+}
+
+.item-info {
+	text-align: left;
+	/* background-color: aliceblue; */
+}
+
+.item-btn {
+	/* background-color: aliceblue; */
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.item-btn > button {
+	width: 130px;
+	height: 40px;
+
+	background-color: #ffffff;
+}
+
+.remove-btn {
+	border: 2px solid red;
+	border-radius: 8px;
+}
+
+.done-btn {
+	border: 2px solid green;
+	border-radius: 8px;
+}
