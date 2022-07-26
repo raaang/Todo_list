@@ -4,7 +4,7 @@ import Header from '../header/Header';
 import Layout from '../layout/Layout';
 
 function TodoList() {
-	const [count, setCount] = useState(1);
+	const [count, setCount] = useState(0);
 	const [todo, setTodo] = useState([{
 		title: "",
 		body: "",

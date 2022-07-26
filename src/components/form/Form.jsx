@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './style.css';
 
-function Form(props) {
+function Form({ todo, setTodo, count, setCount }) {
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 
 	const onSubmitHandler = () => {
-		props.setTodo([...props.todo, {title: title, body: content, isDone: false, id: props.count+1}]);
-		props.setCount(props.count+1);
+		setTodo([...todo, {title: title, body: content, isDone: false, id: count+1}]);
+		setCount(count+1);
 		setTitle('');
 		setContent('');
 	}

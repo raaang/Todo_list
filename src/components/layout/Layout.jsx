@@ -2,11 +2,11 @@ import React from 'react';
 import List from '../list/List';
 import './style.css';
 
-function Layout(props) {
+function Layout({ todo, setTodo }) {
 	const done = [];
 	const working = [];
 
-	const todo_list = props.todo;
+	const todo_list = todo;
 	
 	todo_list.map((item) => {
 		if (item.isDone) {
@@ -19,15 +19,24 @@ function Layout(props) {
 	})
 	
 	const onRemoveHandler = (todo_id) => {
-		console.log('remove');
-		props.setTodo(todo_list.filter((item) => item.id !== todo_id));
-		console.log('remove', props.todo);
+		setTodo(todo_list.filter((item) => item.id !== todo_id));
+		console.log('remove', todo);
 	}
 	
 	const onChangeHandler = (todo) => {
 		console.log('click', todo);
 		const todo_except = todo_list.filter((item) => item.id !== todo.id);
-		props.setTodo([...todo_except, {title: todo.title, body: todo.body, isDone: !todo.isDone, id: todo.id}])
+		setTodo([...todo_except, {title: todo.title, body: todo.body, isDone: !todo.isDone, id: todo.id}]);
+
+		// map() 활용
+		// const todo_new = todo_list.map((item) => {
+		// 	if (item.id === todo.id) {
+		// 		return {...todo, isDone: !todo.isDone};
+		// 	} else {
+		// 		return {...todo};
+		// 	}
+		// });
+		// setTodo(todo_new);
 	}
 
 	return (
