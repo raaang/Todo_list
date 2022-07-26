@@ -4,19 +4,21 @@ import Header from '../header/Header';
 import Layout from '../layout/Layout';
 
 function TodoList() {
-	const [count, setCount] = useState(0);
 	const [todo, setTodo] = useState([{
 		title: "",
 		body: "",
 		isDone: false,
-		id: 0
+		id: 0,
+		star: 0
 	}]);
+
+	console.log(todo);
 
 	return (
 		<>
 			<Header />
-			<Form todo={todo} setTodo={setTodo} count={count} setCount={setCount} />
-			<Layout todo={todo} setTodo={setTodo}/>
+			<Form todo={todo} setTodo={setTodo} />
+			<Layout todo={todo} setTodo={setTodo} />
 		</>
 	);
 }

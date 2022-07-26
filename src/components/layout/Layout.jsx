@@ -26,14 +26,14 @@ function Layout({ todo, setTodo }) {
 	const onChangeHandler = (todo) => {
 		console.log('click', todo);
 		const todo_except = todo_list.filter((item) => item.id !== todo.id);
-		setTodo([...todo_except, {title: todo.title, body: todo.body, isDone: !todo.isDone, id: todo.id}]);
+		setTodo([...todo_except, {title: todo.title, body: todo.body, isDone: !todo.isDone, id: todo.id, star: todo.star}]);
 
 		// map() 활용
 		// const todo_new = todo_list.map((item) => {
 		// 	if (item.id === todo.id) {
-		// 		return {...todo, isDone: !todo.isDone};
+		// 		return {...item, isDone: !item.isDone};
 		// 	} else {
-		// 		return {...todo};
+		// 		return {...item};
 		// 	}
 		// });
 		// setTodo(todo_new);

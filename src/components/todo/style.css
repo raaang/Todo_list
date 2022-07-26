@@ -18,8 +18,21 @@
 	text-align: left;
 }
 
+.todo-content {
+	height: 60%;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.star-container {
+	width: 80px;
+
+	text-align: center;
+}
+
 .todo-btn {
-	/* background-color: aliceblue; */
+	margin: 20px auto;
 
 	display: flex;
 	justify-content: space-between;

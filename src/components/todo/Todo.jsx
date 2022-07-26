@@ -1,11 +1,17 @@
 import React from 'react';
 import './style.css';
 
-function Todo({ key, todo, onChangeHandler, onRemoveHandler }) {
+function Todo({ todo, onChangeHandler, onRemoveHandler }) {
+	console.log(todo.star)
 	return (
 		<div className="todo">
 			<div className="todo-info">
-				<h2>{todo.title}</h2>
+				<div className="todo-content">
+					<h2>{todo.title}</h2>
+					<div className="star-container">
+						<h3>{[...Array(todo.star)].map((_, i) => <span className="star" key={i}>⭐</span>)}</h3>
+					</div>
+				</div>
 				<p>{todo.body}</p>
 			</div>
 			<div className="todo-btn">

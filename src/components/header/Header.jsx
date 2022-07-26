@@ -5,7 +5,7 @@ function Header() {
 
 	return (
 		<div className="header">
-			<div className="title">My Todo List</div>
+			<div className="title">📝 My Todo List</div>
 			<div className="react">React</div>
 		</div>
 	);
