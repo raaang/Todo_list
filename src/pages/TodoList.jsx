@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Form from '../form/Form';
-import Header from '../header/Header';
-import Layout from '../layout/Layout';
+import Form from '../components/form/Form';
+import Header from '../components/header/Header';
+import Layout from '../components/layout/Layout';
 
 function TodoList() {
 	const [todo, setTodo] = useState([{
