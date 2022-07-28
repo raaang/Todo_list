@@ -40,7 +40,7 @@ yarn start
 ## 기능 구현
 
 <div align="center">
-<img src="./todolist_execute.gif" width="800" height="600" />
+<img src="./public/todolist_execute.gif" width="800" height="600" />
 </div>
 <br>
 
