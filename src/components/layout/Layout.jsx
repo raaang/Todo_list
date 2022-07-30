@@ -1,14 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import List from '../list/List';
 import './style.css';
 
-function Layout({ todo, setTodo }) {
+function Layout() {
 	const done = [];
 	const working = [];
 
-	const todo_list = todo;
+	const todos = useSelector((state) => state.todos);
 	
-	todo_list.map((item) => {
+	todos.map((item) => {
 		if (item.isDone) {
 			done.push(item);
 			console.log('donedone', done);
@@ -17,34 +18,13 @@ function Layout({ todo, setTodo }) {
 			console.log('workwork', working);
 		}
 	})
-	
-	const onRemoveHandler = (todo_id) => {
-		setTodo(todo_list.filter((item) => item.id !== todo_id));
-		console.log('remove', todo);
-	}
-	
-	const onChangeHandler = (todo) => {
-		console.log('click', todo);
-		const todo_except = todo_list.filter((item) => item.id !== todo.id);
-		setTodo([...todo_except, {title: todo.title, body: todo.body, isDone: !todo.isDone, id: todo.id, star: todo.star}]);
-
-		// map() 활용
-		// const todo_new = todo_list.map((item) => {
-		// 	if (item.id === todo.id) {
-		// 		return {...item, isDone: !item.isDone};
-		// 	} else {
-		// 		return {...item};
-		// 	}
-		// });
-		// setTodo(todo_new);
-	}
 
 	return (
 		<div className="list-layout">
-				<h2>Working.. 🔥</h2>
-				<List todo={working} onChangeHandler={onChangeHandler} onRemoveHandler={onRemoveHandler} />
-				<h2>Done..! 🎉</h2>
-				<List todo={done} onChangeHandler={onChangeHandler} onRemoveHandler={onRemoveHandler} />
+			<h2>Working.. 🔥</h2>
+			<List todo={working} />
+			<h2>Done..! 🎉</h2>
+			<List todo={done} />
 		</div>
 	);
 }

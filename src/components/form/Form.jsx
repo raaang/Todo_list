@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../../redux/modules/todos';
 import './style.css';
 
-function Form({ todo, setTodo }) {
+function Form() {
+	const dispatch = useDispatch();
+	
 	const [title, setTitle] = useState('');
 	const [content, setContent] = useState('');
 	const [star, setStar] = useState(1);
 
 	const onSubmitHandler = () => {
-		setTodo([...todo, {title: title, body: content, isDone: false, id: todo.length, star: Number(star)}]);
+		// setTodo([...todo, {title: title, body: content, isDone: false, id: todo.length, star: Number(star)}]);
+		const todo_new = {title: title, body: content, isDone: false, star: Number(star)};
+		dispatch(addTodo(todo_new));
 		setTitle('');
 		setContent('');
 		setStar(1);

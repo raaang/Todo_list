@@ -4,21 +4,21 @@ import Header from '../components/header/Header';
 import Layout from '../components/layout/Layout';
 
 function TodoList() {
-	const [todo, setTodo] = useState([{
-		title: "",
-		body: "",
-		isDone: false,
-		id: 0,
-		star: 0
-	}]);
+	// const [todo, setTodo] = useState([{
+	// 	title: "",
+	// 	body: "",
+	// 	isDone: false,
+	// 	id: 0,
+	// 	star: 0
+	// }]);
 
-	console.log(todo);
+	// console.log(todo);
 
 	return (
 		<>
 			<Header />
-			<Form todo={todo} setTodo={setTodo} />
-			<Layout todo={todo} setTodo={setTodo} />
+			<Form />
+			<Layout />
 		</>
 	);
 }
