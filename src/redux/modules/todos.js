@@ -36,58 +36,77 @@ export const getTodoById = (payload) => {
 }
 
 // Initial State
-const initialState = [
-	{
+
+// todo_list -> 모든 정보
+// todo -> 상세화면 정보
+const initialState = {
+	todo_list: [
+		{
+			id: nanoid(10),
+			title: "리액트 강의보기",
+			body: "챕터 1부터 챕터 12까지 학습",
+			isDone: false,
+			star: 2
+		},
+		{
+			id: nanoid(10),
+			title: "점심 먹기",
+			body: "점심 뭐먹지..?",
+			isDone: true,
+			star: 1
+		}
+	],
+	todo: {
 		id: nanoid(10),
 		title: "리액트 강의보기",
 		body: "챕터 1부터 챕터 12까지 학습",
 		isDone: false,
 		star: 2
-	},
-	{
-		id: nanoid(10),
-		title: "점심 먹기",
-		body: "점심 뭐먹지..?",
-		isDone: true,
-		star: 1
 	}
-]
+}
 
 // Reducer
 const todos = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TODO:
 			console.log('reducer ADD_TODO', action.payload);
-			return [...state, {
-				...action.payload,
-				id: nanoid(10)
-			}];
+			return {
+				...state,
+				todo_list: [...state.todo_list, {
+					...action.payload,
+					id: nanoid(10)
+				}]
+			};
 		
 		case DELETE_TODO:
 			console.log('reducer DELETE_TODO', action.payload);
-			return state.filter((item) => item.id !== action.payload);
+			return {
+				...state,
+				todo_list: state.todo_list.filter((item) => item.id !== action.payload)
+			};
 
 		case STATUS_TODO:
 			console.log('reducer STATUS_TODO', action.payload);
-			const todo_new = state.map((item) => {
+			const todo_new = state.todo_list.map((item) => {
 				if (item.id === action.payload) {
 					return {...item, isDone: !item.isDone};
 				} else {
 					return item;
 				}
 			});
-			return todo_new;
+			return {
+				...state,
+				todo: todo_new
+			};
 
 		case GET_TODO_ID:
 			console.log('reducer GET_TODO_ID', action.payload);
-			console.log('reducer', state.find((item) => item.id !== action.payload));
-			return state.find((item) => item.id === action.payload);
-			// return {
-      //   ...state,
-      //   todo: state.todos.find((todo) => {
-      //     return todo.id === action.payload;
-      //   }),
-
+			const todo_find = state.todo_list.find((item) => item.id === action.payload);
+			return {
+				...state,
+				todo: todo_find
+			};
+			
 		default:
 			return state;
 	}

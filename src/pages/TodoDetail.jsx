@@ -20,9 +20,10 @@ function TodoDetail() {
 	// const todo = useSelector((state) => state.todos).filter((item) => item.id === param.id)[0];
 	// console.log(todo);
 
-	const todo = useSelector((state) => state.todos);
+	// todo_list가 아니라 todo를 가져온다!!!
+	const todo = useSelector((state) => state.todos.todo);
 	console.log(todo);
-	
+
 
 	useEffect(() => {
 		dispatch(getTodoById(id));

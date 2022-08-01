@@ -7,7 +7,7 @@ function Layout() {
 	const done = [];
 	const working = [];
 
-	const todos = useSelector((state) => state.todos);
+	const todos = useSelector((state) => state.todos.todo_list);
 	
 	todos.map((item) => {
 		if (item.isDone) {
