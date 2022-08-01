@@ -1,7 +1,10 @@
+import { nanoid } from 'nanoid';
+
 // Action Value
 const ADD_TODO = "ADD_TODO";
 const REMOVE_TODO = "REMOVE_TODO";
 const ISDONE_TODO = "ISDONE_TODO";
+const FIND_TODO = "FIND_TODO";
 
 // Action Creator
 export const addTodo = (payload) => {
@@ -25,17 +28,24 @@ export const isdoneTodo = (payload) => {
 	}
 }
 
+export const findTodo = (payload) => {
+	return {
+		type: FIND_TODO,
+		payload,
+	}
+}
+
 // Initial State
 const initialState = [
 	{
-		id: 1,
+		id: nanoid(10),
 		title: "리액트 강의보기",
 		body: "챕터 1부터 챕터 12까지 학습",
 		isDone: false,
 		star: 2
 	},
 	{
-		id: 2,
+		id: nanoid(10),
 		title: "점심 먹기",
 		body: "점심 뭐먹지..?",
 		isDone: true,
@@ -50,7 +60,7 @@ const todos = (state = initialState, action) => {
 			console.log('reducer ADD_TODO', action.payload);
 			return [...state, {
 				...action.payload,
-				id: state[state.length - 1].id + 1
+				id: nanoid(10)
 			}];
 		
 		case REMOVE_TODO:
@@ -67,6 +77,10 @@ const todos = (state = initialState, action) => {
 				}
 			});
 			return todo_new;
+
+		case FIND_TODO:
+			console.log('reducer FIND_TODO', action.payload);
+			return state.filter((item) => item.id === action.payload);
 
 		default:
 			return state;

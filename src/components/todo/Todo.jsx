@@ -1,13 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { isdoneTodo, removeTodo } from '../../redux/modules/todos';
 import './style.css';
 
 function Todo({ todo }) {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 		
 	const onRemoveHandler = (todo_id) => {
-		// setTodo(todo_list.filter((item) => item.id !== todo_id));
 		dispatch(removeTodo(todo_id));
 		console.log('remove', todo);
 	}
@@ -15,23 +16,17 @@ function Todo({ todo }) {
 	const onChangeHandler = (todo_id) => {
 		console.log('click', todo);
 		dispatch(isdoneTodo(todo_id));
-		// const todo_except = todo_list.filter((item) => item.id !== todo.id);
-		// setTodo([...todo_except, {title: todo.title, body: todo.body, isDone: !todo.isDone, id: todo.id, star: todo.star}]);
+	}
 
-		// map() 활용
-		// const todo_new = todo_list.map((item) => {
-		// 	if (item.id === todo.id) {
-		// 		return {...item, isDone: !item.isDone};
-		// 	} else {
-		// 		return {...item};
-		// 	}
-		// });
-		// setTodo(todo_new);
+	const onMoveHandler = (todo_id) => {
+		console.log('move', todo);
+		navigate(`/detail/${todo_id}`, {state: {todo: todo}});
 	}
 
 	return (
 		<div className="todo">
 			<div className="todo-info">
+				<span className="todo-detail" onClick={() => onMoveHandler(todo.id)}>상세페이지</span>
 				<div className="todo-content">
 					<h2>{todo.title}</h2>
 					<div className="star-container">
