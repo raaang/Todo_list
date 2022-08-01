@@ -2,9 +2,9 @@ import { nanoid } from 'nanoid';
 
 // Action Value
 const ADD_TODO = "ADD_TODO";
-const REMOVE_TODO = "REMOVE_TODO";
-const ISDONE_TODO = "ISDONE_TODO";
-const FIND_TODO = "FIND_TODO";
+const DELETE_TODO = "DELETE_TODO";
+const STATUS_TODO = "STATUS_TODO";
+const GET_TODO_ID = "GET_TODO_ID";
 
 // Action Creator
 export const addTodo = (payload) => {
@@ -14,23 +14,23 @@ export const addTodo = (payload) => {
 	};
 };
 
-export const removeTodo = (payload) => {
+export const deleteTodo = (payload) => {
 	return {
-		type: REMOVE_TODO,
+		type: DELETE_TODO,
 		payload,
 	}
 }
 
-export const isdoneTodo = (payload) => {
+export const toggleStatusTodo = (payload) => {
 	return {
-		type: ISDONE_TODO,
+		type: STATUS_TODO,
 		payload,
 	}
 }
 
-export const findTodo = (payload) => {
+export const getTodoById = (payload) => {
 	return {
-		type: FIND_TODO,
+		type: GET_TODO_ID,
 		payload,
 	}
 }
@@ -63,12 +63,12 @@ const todos = (state = initialState, action) => {
 				id: nanoid(10)
 			}];
 		
-		case REMOVE_TODO:
-			console.log('reducer REMOVE_TODO', action.payload);
+		case DELETE_TODO:
+			console.log('reducer DELETE_TODO', action.payload);
 			return state.filter((item) => item.id !== action.payload);
 
-		case ISDONE_TODO:
-			console.log('reducer ISDONE_TODO', action.payload);
+		case STATUS_TODO:
+			console.log('reducer STATUS_TODO', action.payload);
 			const todo_new = state.map((item) => {
 				if (item.id === action.payload) {
 					return {...item, isDone: !item.isDone};
@@ -78,9 +78,15 @@ const todos = (state = initialState, action) => {
 			});
 			return todo_new;
 
-		case FIND_TODO:
-			console.log('reducer FIND_TODO', action.payload);
-			return state.filter((item) => item.id === action.payload);
+		case GET_TODO_ID:
+			console.log('reducer GET_TODO_ID', action.payload);
+			console.log('reducer', state.find((item) => item.id !== action.payload));
+			return state.find((item) => item.id === action.payload);
+			// return {
+      //   ...state,
+      //   todo: state.todos.find((todo) => {
+      //     return todo.id === action.payload;
+      //   }),
 
 		default:
 			return state;

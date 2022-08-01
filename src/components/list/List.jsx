@@ -1,17 +1,22 @@
 import React from 'react';
-import Todo from '../todo/Todo'
-import './style.css';
+import styled from 'styled-components';
+import Todo from '../todo/Todo';
 
 function List({ todo }) {
-	// const todos = useSelector((state) => state.todos);
-
 	return (
-		<div className="list-wrap">
-			{todo.map((item, index) => {
-				return <Todo className="list-item" key={index} todo={item}/>
+		<ListWrap>
+			{todo.map((item) => {
+				return <Todo className="list-item" key={item.id} todo={item}/>
 			})}
-	</div>
+	</ListWrap>
 	);
 }
+
+const ListWrap = styled.div`
+	width: 100%;
+
+	display: flex;
+	flex-wrap: wrap;
+`;
 
 export default List;

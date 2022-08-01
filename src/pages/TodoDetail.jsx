@@ -1,31 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { getTodoById } from '../redux/modules/todos';
 
 function TodoDetail() {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
+	const { id } = useParams();
+	console.log('detail', id);
+
+	// get todo info by status
+	// const location = useLocation();
+	// const todo = location.state.todo;
+	// console.log('detail', todo);
+
+	// get todo info by useSelector()
+	// const todo = useSelector((state) => state.todos).filter((item) => item.id === param.id)[0];
+	// console.log(todo);
+
+	const todo = useSelector((state) => state.todos);
+	console.log(todo);
 	
-	const param = useParams();
-	const location = useLocation();
-	const todo = location.state.todo;
-	console.log('detail', todo);
+
+	useEffect(() => {
+		dispatch(getTodoById(id));
+	}, [dispatch, id]);
 	
+
 	const onMoveBackHandler = () => {
 		navigate(-1);
+		// navigate("/");
 	}
 
 	return (
 		<DetailLayout>
 			<DetailContainer>
 				<Header>
-					<span>ID: {param.id}</span>
+					<div>
+						{todo.isDone ? <Status status="done">Done Todo</Status> : <Status status="working">Working Todo</Status>}
+						<span>ID: {todo.id}</span>
+					</div>
 					<BackBtn onClick={onMoveBackHandler}>이전으로</BackBtn>
 				</Header>
 				<Body>
 					<Content>
 						<h1>{todo.title}</h1>
 						<StarContainer className="star-container">
-							<h2>{[...Array(todo.star)].map((_, i) => <span className="star" key={i}>⭐</span>)}</h2>
+							{/* <h2>{[...Array(todo.star)].map((_, i) => <span className="star" key={i}>⭐</span>)}</h2> */}
+							<h2>{"⭐".repeat(todo.star)}</h2>
 						</StarContainer>
 					</Content>
 					<p>{todo.body}</p>
@@ -51,9 +75,16 @@ const DetailContainer = styled.div`
 	border-radius: 20px;
 `;
 
-const Header = styled.div`
-	/* background-color: beige; */
+const Status = styled.span`
+	margin-right: 20px;
+	font-size: large;
+	font-weight: bold;
+	font-style: italic;
 
+	color: ${(props) => props.status === "done" ? "blue" : "red"};
+`;
+
+const Header = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -63,18 +94,22 @@ const BackBtn = styled.button`
 	width: 130px;
 	height: 40px;
 
-	background-color: azure;
-	border: 2px solid blue;
+	background-color: #ffffff;
+	border: 2px solid green;
 	border-radius: 8px;
+
+	&:hover {
+		font-weight: bold;
+		color: white;
+		background-color: green;
+	}
 `;
 
 const Body = styled.div`
 	margin-top: 20px;
-	/* background-color: aqua; */
 `;
 
 const Content = styled.div`
-	/* background-color: beige; */
 	display: flex;
 	justify-content: space-between;
 `;
@@ -82,8 +117,6 @@ const Content = styled.div`
 const StarContainer = styled.div`
 	width: 80px;
 	text-align: center;
-
-	/* background-color: firebrick; */
 `;
 
 export default TodoDetail;

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import styled from 'styled-components';
 import List from '../list/List';
-import './style.css';
 
 function Layout() {
 	const done = [];
@@ -20,13 +20,17 @@ function Layout() {
 	})
 
 	return (
-		<div className="list-layout">
+		<ListLayout>
 			<h2>Working.. 🔥</h2>
 			<List todo={working} />
 			<h2>Done..! 🎉</h2>
 			<List todo={done} />
-		</div>
+		</ListLayout>
 	);
 }
+
+const ListLayout = styled.div`
+	margin: auto 20px;
+`;
 
 export default Layout;
