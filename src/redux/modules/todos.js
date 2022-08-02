@@ -69,7 +69,7 @@ const initialState = {
 const todos = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_TODO:
-			console.log('reducer ADD_TODO', action.payload);
+			// console.log('reducer ADD_TODO', action.payload);
 			return {
 				...state,
 				todo_list: [...state.todo_list, {
@@ -79,14 +79,14 @@ const todos = (state = initialState, action) => {
 			};
 		
 		case DELETE_TODO:
-			console.log('reducer DELETE_TODO', action.payload);
+			// console.log('reducer DELETE_TODO', action.payload);
 			return {
 				...state,
 				todo_list: state.todo_list.filter((item) => item.id !== action.payload)
 			};
 
 		case STATUS_TODO:
-			console.log('reducer STATUS_TODO', action.payload);
+			// console.log('reducer STATUS_TODO', action.payload);
 			const todo_new = state.todo_list.map((item) => {
 				if (item.id === action.payload) {
 					return {...item, isDone: !item.isDone};
@@ -96,11 +96,11 @@ const todos = (state = initialState, action) => {
 			});
 			return {
 				...state,
-				todo: todo_new
+				todo_list: todo_new
 			};
 
 		case GET_TODO_ID:
-			console.log('reducer GET_TODO_ID', action.payload);
+			// console.log('reducer GET_TODO_ID', action.payload);
 			const todo_find = state.todo_list.find((item) => item.id === action.payload);
 			return {
 				...state,

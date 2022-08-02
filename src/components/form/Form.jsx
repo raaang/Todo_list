@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { addTodo } from '../../redux/modules/todos';
@@ -17,6 +17,14 @@ function Form() {
 		setContent('');
 		setStar(1);
 	}
+
+	useEffect(() => {
+		return () => {
+			setTitle('');
+			setContent('');
+			setStar(1);
+		};
+	}, []);
 
 	return (
 		<FormContainer>

@@ -2,19 +2,19 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { deleteTodo, getTodoById, toggleStatusTodo } from '../../redux/modules/todos';
+import { deleteTodo, toggleStatusTodo } from '../../redux/modules/todos';
 
 function Todo({ todo }) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 		
 	const onRemoveHandler = (todo_id) => {
-		dispatch(deleteTodo(todo_id));
 		console.log('remove', todo);
+		dispatch(deleteTodo(todo_id));
 	}
 	
 	const onChangeHandler = (todo_id) => {
-		console.log('click', todo);
+		console.log('change status', todo);
 		dispatch(toggleStatusTodo(todo_id));
 	}
 

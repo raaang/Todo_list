@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import List from '../list/List';
@@ -18,7 +18,7 @@ function Layout() {
 			console.log('workwork', working);
 		}
 	})
-
+	
 	return (
 		<ListLayout>
 			<h2>Working.. 🔥</h2>
