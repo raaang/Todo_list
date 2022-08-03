@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getTodoById } from '../redux/modules/todos';
+// import { get, getTodoById } from '../redux/modules/todosToolkit';
 
 function TodoDetail() {
 	const dispatch = useDispatch();
@@ -19,11 +20,20 @@ function TodoDetail() {
 	// const todo = useSelector((state) => state.todos).filter((item) => item.id === param.id)[0];
 	// console.log(todo);
 
+
 	// todo_list가 아니라 todo를 가져온다!!!
 	const todo = useSelector((state) => state.todos.todo);
 
+	// use redux-toolkit
+	// const todo = useSelector((state) => state.todosToolkit.todo);
+
+	// use redux-toolkit createSlice
+	// const todo = useSelector((state) => state.todo);
+	// console.log(todo);
+
 	useEffect(() => {
 		dispatch(getTodoById(id));
+		// dispatch(get(id));						// use redux-toolkit createSlice()
 	}, [dispatch, id]);
 
 	const onMoveBackHandler = () => {

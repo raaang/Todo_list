@@ -8,6 +8,13 @@ function Layout() {
 	const working = [];
 
 	const todos = useSelector((state) => state.todos.todo_list);
+
+	// use redux-toolkit
+	// const todos = useSelector((state) => state.todosToolkit.todo_list);
+
+	// use redux-toolkit createSlice
+	// const todos = useSelector((state) => state.todo_list);
+	// console.log('layout', todos);
 	
 	todos.map((item) => {
 		if (item.isDone) {

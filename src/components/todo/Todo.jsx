@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { deleteTodo, toggleStatusTodo } from '../../redux/modules/todos';
+// import { deleteTodo, remove, toggleStatus, toggleStatusTodo } from '../../redux/modules/todosToolkit';
 
 function Todo({ todo }) {
 	const dispatch = useDispatch();
@@ -11,11 +12,13 @@ function Todo({ todo }) {
 	const onRemoveHandler = (todo_id) => {
 		console.log('remove', todo);
 		dispatch(deleteTodo(todo_id));
+		// dispatch(remove(todo_id))						// use redux-toolkit createSlice()
 	}
 	
 	const onChangeHandler = (todo_id) => {
 		console.log('change status', todo);
 		dispatch(toggleStatusTodo(todo_id));
+		// dispatch(toggleStatus(todo_id));		// use redux-toolkit createSlice()
 	}
 
 	const onMoveHandler = (todo_id) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { addTodo } from '../../redux/modules/todos';
+// import { add, addTodo } from '../../redux/modules/todosToolkit';
 
 function Form() {
 	const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function Form() {
 	const onSubmitHandler = () => {
 		const todo_new = {title: title, body: content, isDone: false, star: Number(star)};
 		dispatch(addTodo(todo_new));
+		// dispatch(add(todo_new));				// use redux-toolkit createSlice()
 		setTitle('');
 		setContent('');
 		setStar(1);
